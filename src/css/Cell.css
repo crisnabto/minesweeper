@@ -6,6 +6,10 @@
   height: 50px;
 }
 
+.isBomb {
+  background-color: red;
+}
+
 .emptyCell {
   background-color: grey;
   width: 50px;

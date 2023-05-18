@@ -2,17 +2,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import '../css/Cell.css';
 
 const Cell = ({ props }) => {
-  const { handleCellClick, cell, gameOver } = props;
+  const { handleCellClick, cell, gameOver, board } = props;
   const [localCell, setLocalCell] = useState(cell);
 
   const handleClick = () => {
     let newCell = { ...cell };
     newCell.isRevealed = true;
     setLocalCell(newCell);
-    handleCellClick(cell)
+    handleCellClick(localCell, board)
   };
 
-  const handleContextMenu = () => {
+  const handleContextMenu = (e) => {
+    e.preventDefault()
     let newCell = { ...localCell };
     newCell.isFlagged = !newCell.isFlagged;
     setLocalCell(newCell);
@@ -41,10 +42,10 @@ const Cell = ({ props }) => {
         isRevealed: true
       }));
     } else if (!localCell.isFlagged){
-      setLocalCell(cell)
+      setLocalCell(cell);
     }
     renderContent();
-  }, [renderContent, cell, gameOver, localCell.isFlagged]);
+  }, [renderContent, gameOver, localCell.isFlagged, cell]);
 
   return (
     <div
