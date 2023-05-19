@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Board from './Board';
+import 'bootstrap/dist/css/bootstrap.css';
+import bomb from '../images/bomb.png';
 import '../css/Game.css';
 
 const Game = () => {
@@ -11,7 +13,7 @@ const Game = () => {
   const [mainBoard, setMainBoard] = useState([]);
   const [seconds, setSeconds] = useState(0);
   const [timer, setTimer] = useState(null);
-  const [startReset, setStartReset] = useState('Start game');
+  const [startReset, setStartReset] = useState('Start');
   const [victory, setVictory] = useState(false)
 
   const startTimer = () => {
@@ -32,6 +34,7 @@ const Game = () => {
     clearInterval(timer);
     setSeconds(0);
     setMainBoard([]);
+    setDifficulty(difficulty);
     setStartReset('Reset');
     setGameOver(false);
     setIsGameStarted(true);
@@ -86,13 +89,15 @@ const Game = () => {
   // if cell is empty, checks for cells around
   // if cells around are empty, check for cells around the empties...
   const handleCellClick = (cell, board) => {
+    if (gameOver) {
+      return;
+    }
     const newBoard = [...board];
     const { row, col } = cell;
 
     newBoard[row][col].isRevealed = true;
 
     if (newBoard[row][col].isBomb) {
-      console.log(board);
       setGameOver(true);
     } else if (newBoard[row][col].neighborBombCount === 0) {
       revealEmptyCells(newBoard[row][col], newBoard);
@@ -103,23 +108,26 @@ const Game = () => {
 
   useEffect(() => {
     setShowBoard(isGameStarted);
-  }, [isGameStarted])
+  }, [isGameStarted, difficulty])
 
   return (
-    <div className='minesweeper-container'>
-      <h1>Minesweeper</h1>
-      <div className='header-container'>
+    <div  className="card minesweeper-container" >
+      <div className="title-container">
+        <h1 className="h1">Minesweeper</h1>
+        <img src={bomb} alt="bomb" />
+      </div>
 
-        <>
-          <p>Level</p>
-          <select value={difficulty} onChange={handleLevelChange}>
+      <div className='header-container'>
+        <div className="level-container">
+          <select id="level" className="form-select form-select-sm" value={difficulty} onChange={handleLevelChange}>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-          <button onClick={handleStartGame}>{startReset}</button>
-        </>
+        <button onClick={handleStartGame} className="btn btn-primary">{startReset}</button>
+        </div>
       </div>
+
       {showBoard ? (
         <Board props={{ difficulty, handleCellClick, gameOver, mainBoard, seconds, checkCell, victory }} />
       ) : null}

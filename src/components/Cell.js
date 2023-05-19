@@ -36,7 +36,7 @@ const Cell = ({ props }) => {
   }, [localCell.isBomb, localCell.isFlagged, localCell.isRevealed, localCell.neighborBombCount])
 
   useEffect(() => {
-    if (gameOver) {
+    if (gameOver && localCell.isBomb) {
       setLocalCell((prevCell) => ({
         ...prevCell,
         isRevealed: true,
@@ -46,7 +46,7 @@ const Cell = ({ props }) => {
       setLocalCell(cell);
     }
     renderContent();
-  }, [renderContent, gameOver, localCell.isFlagged, cell]);
+  }, [renderContent, gameOver, localCell.isFlagged, cell, localCell.isBomb]);
 
   return (
     <div

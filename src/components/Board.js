@@ -7,6 +7,7 @@ function Board({ props }) {
   const { difficulty, handleCellClick, renderContent, gameOver, mainBoard, seconds, checkCell, victory } = props;
   const [board, setBoard] = useState([]);
   const [level] = useState(difficulty);
+  const [bombs, setBombs] = useState(0);
 
   const countBombs = (newBoardLine, newBoard) => {
     newBoardLine.forEach((cell) => {
@@ -31,7 +32,6 @@ function Board({ props }) {
         }
       }
       cell.neighborBombCount = bombsCount;
-      // console.log(cell);
     })
   }
 
@@ -47,6 +47,7 @@ function Board({ props }) {
           medium: { rows: 12, cols: 12, bombs: 30 },
           hard: { rows: 16, cols: 16, bombs: 50 }
         };
+        setBombs(settings[level].bombs);
         return settings[level];
       };
       const { rows, cols, bombs } = getBoardSettings(level);
@@ -86,23 +87,26 @@ function Board({ props }) {
   
       // checks if each cell of the board has bombs around
       newBoard.forEach((line) => countBombs(line, newBoard))
-      console.log(newBoard);
   
       setBoard(newBoard);
 
     }
-  }, [mainBoard])
+  }, [mainBoard, difficulty])
   // console.table(board);
 
   return (
-    <div>
+    <div className='board-container'>
       {gameOver && !victory ?(
-        <div>
-          <p>Game over!</p> 
+        <div >
+          <p className="fw-light">Game over! 🙁</p> 
         </div>
       ) : gameOver && victory ? (
-        <p>You win! Score: {seconds}</p> ) : (
-        <p>Time: {seconds}</p>
+        <p className="fw-light" >You win! Score: {seconds}</p> 
+      ) : (
+        <div className='game-on'>
+          <p className="fw-light">⏱️ {seconds} </p>
+          <p className="fw-light">{bombs} 💣</p>
+        </div>
       )}
       {board.map((line, rowIndex) => (
         <div key={rowIndex} className="rowContainer">

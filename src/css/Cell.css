@@ -1,32 +1,52 @@
-.isBomb, .hasBombsAround, .isFlagged {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  width: 50px;
-  height: 50px;
-}
-
-.isBomb {
-  background-color: red;
-  width: 30px;
-  height: 30px;
-}
-
-.emptyCell {
-  background-color: rgb(120, 56, 56);
-  width: 30px;
-  height: 30px;
-}
-
 .cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: #c0c0c0;
-  border: 1px solid #808080;
+  width: 25px;
+  height: 25px;
   font-size: 16px;
   font-weight: bold;
+}
+
+.emptyCell {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(194, 210, 149);
+  border-right: 1px solid rgb(204, 218, 169);
+  border-bottom: 1px solid rgb(204, 218, 169);
+  cursor: default;
+}
+
+.isBomb, .hasBombsAround, .isFlagged {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(173, 193, 120);
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+
+.hasBombsAround {
+  border: 1px solid rgb(157, 175, 109);
+}
+
+.initialCell {
+  background-color: rgb(169, 132, 103);
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 2px solid #565454;
+  border-bottom: 2px solid #565454;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
+}
+
+.initialCell:hover {
+  background-color: rgb(233, 237, 201);
+}
+
+.isBomb {
+  background-color: red;
 }
