@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Campo Minado :bomb:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositório contém o código fonte de um jogo de Campo Minado desenvolvido em React. O jogo é uma versão do clássico jogo, onde o objetivo é desvendar células vazias sem acionar as bombas ocultas.
 
-## Available Scripts
+Regras do Jogo de Campo Minado:
 
-In the project directory, you can run:
+- O tabuleiro é composto por células que podem conter bombas ou serem vazias.
+- O jogador deve revelar as células do tabuleiro clicando nelas.
+- Se o jogador revelar uma célula vazia, ela exibirá o número de bombas adjacentes.
+- Se o jogador revelar uma célula com uma bomba, o jogo acaba e o jogador perde.
+- O jogador pode marcar uma célula com uma bandeira para indicar que há uma bomba nela.
+- O jogador vence o jogo quando todas as células sem bombas forem reveladas.
+- O jogo possui três níveis de dificuldade: fácil, médio e difícil, com diferentes tamanhos de tabuleiro e número de bombas.
+<br>
+Este repositório fornece o código fonte para a implementação do jogo, incluindo os componentes React necessários, como o tabuleiro, células, estilos CSS e lógica do jogo. O código é organizado e modular, facilitando a compreensão e personalização do jogo.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Orientações
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone o repositório
 
-### `npm test`
+```
+git clone git@github.com:crisnabto/minefield.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Instale as dependências:
+<br>
+### `npm install`
 
-### `npm run build`
+Inicialize o projeto:
+<br>
+ ### `npm start`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ ---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### :envelope_with_arrow: Contact
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:crisnabto@gmail.com)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/crisna-bezerra/)
