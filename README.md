@@ -20,7 +20,7 @@ Este repositório fornece o código fonte para a implementação do jogo, inclui
 Clone o repositório
 
 ```
-git clone git@github.com:crisnabto/minefield.git
+git clone git@github.com:crisnabto/minesweeper.git
 ```
 
 Instale as dependências:
