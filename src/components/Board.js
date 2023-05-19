@@ -4,7 +4,7 @@ import Cell from './Cell';
 import '../css/Board.css';
 
 function Board({ props }) {
-  const { difficulty, handleCellClick, renderContent, gameOver, showAround, mainBoard } = props;
+  const { difficulty, handleCellClick, renderContent, gameOver, mainBoard, seconds, checkCell, victory } = props;
   const [board, setBoard] = useState([]);
   const [level] = useState(difficulty);
 
@@ -38,12 +38,12 @@ function Board({ props }) {
   useEffect(() => {
     // creates board based on level
     if (mainBoard.length > 0) {
-      // console.log(mainBoard)
+      checkCell(mainBoard, difficulty);
       setBoard(mainBoard);
     } else {
       const getBoardSettings = (level) => {
         const settings = {
-          easy: { rows: 8, cols: 8, bombs: 10 },
+          easy: { rows: 10, cols: 10, bombs: 10 },
           medium: { rows: 12, cols: 12, bombs: 30 },
           hard: { rows: 16, cols: 16, bombs: 50 }
         };
@@ -86,21 +86,29 @@ function Board({ props }) {
   
       // checks if each cell of the board has bombs around
       newBoard.forEach((line) => countBombs(line, newBoard))
+      console.log(newBoard);
   
       setBoard(newBoard);
 
     }
-  }, [])
-
+  }, [mainBoard])
   // console.table(board);
 
   return (
     <div>
+      {gameOver && !victory ?(
+        <div>
+          <p>Game over!</p> 
+        </div>
+      ) : gameOver && victory ? (
+        <p>You win! Score: {seconds}</p> ) : (
+        <p>Time: {seconds}</p>
+      )}
       {board.map((line, rowIndex) => (
         <div key={rowIndex} className="rowContainer">
           {line.map((cell, columnIndex) => (
             <div key={`${rowIndex}-${columnIndex}`} className="cellContainer">
-              <Cell props={{ cell, handleCellClick, renderContent, gameOver, board, showAround }} />
+              <Cell props={{ cell, handleCellClick, renderContent, gameOver, board }} />
             </div>
           ))}
         </div>

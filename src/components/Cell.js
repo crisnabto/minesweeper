@@ -26,7 +26,7 @@ const Cell = ({ props }) => {
       ) : localCell.neighborBombCount > 0 ? (
         <div className="hasBombsAround">{localCell.neighborBombCount}</div>
       ) : (
-        <div className="emptyCell"></div>
+        <div className="emptyCell">&nbsp;</div>
       );
     } else if (localCell.isFlagged) {
       return <div className="isFlagged">🚩</div>;
@@ -39,7 +39,8 @@ const Cell = ({ props }) => {
     if (gameOver) {
       setLocalCell((prevCell) => ({
         ...prevCell,
-        isRevealed: true
+        isRevealed: true,
+        isFlagged: false
       }));
     } else if (!localCell.isFlagged){
       setLocalCell(cell);
