@@ -6,7 +6,7 @@ import '../css/Board.css';
 function Board({ props }) {
   const { difficulty, handleCellClick, renderContent, gameOver, mainBoard, seconds, checkCell, victory } = props;
   const [board, setBoard] = useState([]);
-  const [level] = useState(difficulty);
+  // const [level] = useState(difficulty);
   const [bombs, setBombs] = useState(0);
 
   const countBombs = (newBoardLine, newBoard) => {
@@ -36,7 +36,6 @@ function Board({ props }) {
   }
 
   useEffect(() => {
-    // creates board based on level
     if (mainBoard.length > 0) {
       checkCell(mainBoard, difficulty);
       setBoard(mainBoard);
@@ -50,7 +49,7 @@ function Board({ props }) {
         setBombs(settings[level].bombs);
         return settings[level];
       };
-      const { rows, cols, bombs } = getBoardSettings(level);
+      const { rows, cols, bombs } = getBoardSettings(difficulty);
   
       const newBoard = [];
   
@@ -91,7 +90,7 @@ function Board({ props }) {
       setBoard(newBoard);
 
     }
-  }, [mainBoard, difficulty])
+  }, [mainBoard])
   // console.table(board);
 
   return (

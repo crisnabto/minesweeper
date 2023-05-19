@@ -16,6 +16,7 @@ const Game = () => {
   const [startReset, setStartReset] = useState('Start');
   const [victory, setVictory] = useState(false)
 
+
   const startTimer = () => {
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => prevSeconds + 1);
@@ -34,7 +35,6 @@ const Game = () => {
     clearInterval(timer);
     setSeconds(0);
     setMainBoard([]);
-    setDifficulty(difficulty);
     setStartReset('Reset');
     setGameOver(false);
     setIsGameStarted(true);
@@ -108,7 +108,7 @@ const Game = () => {
 
   useEffect(() => {
     setShowBoard(isGameStarted);
-  }, [isGameStarted, difficulty])
+  }, [isGameStarted])
 
   return (
     <div  className="card minesweeper-container" >
